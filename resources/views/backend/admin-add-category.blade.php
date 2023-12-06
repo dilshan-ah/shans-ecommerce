@@ -1,3 +1,6 @@
+<link href="{{asset('backend')}}/assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
+<link href="{{asset('backend')}}/assets/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
+
 @extends('backend/admin-master')
 @section('admin-section')
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -81,8 +84,23 @@
                                     @enderror
                                 </div>
 
+                                <div class="mb-3" data-select2-id="21">
+                                    <label class="form-label">Parent Category</label>
+                                    <select class="single-select select2-hidden-accessible" name="pcat" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                        
+                                        <option value="0">select parent category</option>
+
+                                        @if(count($categories)>0)
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach    
+                                        @endif 
+
+                                    </select>
+                                </div>
+
                                 <div class="mb-3">
-                                    <label for="inputProductType" class="form-label">Product Type</label>
+                                    <label for="inputProductType" class="form-label">Category Status</label>
                                     <select class="form-select" id="inputProductType" name="status">
                                         <option value="1" selected>Active</option>
                                         <option value="0">Inactive</option>
@@ -115,6 +133,17 @@
             </div>
         </div>
     </div>
+
+    <script src="{{asset('backend')}}/assets/plugins/select2/js/select2.min.js"></script>
+
+    <script>
+		$('.single-select').select2({
+			theme: 'bootstrap4',
+			width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+			placeholder: $(this).data('placeholder'),
+			allowClear: Boolean($(this).data('allow-clear')),
+		});
+	</script>
 
     <script>
     $(document).ready(function() {

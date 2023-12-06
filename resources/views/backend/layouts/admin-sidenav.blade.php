@@ -19,7 +19,7 @@
 					</a>
 				</li>
 				
-				<li class="menu-label">Products & vendors</li>
+				<li class="menu-label">Products & categories</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class="fadeIn animated bx bx-spreadsheet"></i>
@@ -42,14 +42,13 @@
 						<div class="menu-title">Product</div>
 					</a>
 					<ul>
-						<li> <a href="table-basic-table.html"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+						<li> <a href="{{route('admin.add-product')}}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
 						</li>
 						<li> <a href="table-datatable.html"><i class="bx bx-right-arrow-alt"></i>Manage Product</a>
 						</li>
 						
 					</ul>
 				</li>
-				
 				
 			</ul>
 			<!--end navigation-->

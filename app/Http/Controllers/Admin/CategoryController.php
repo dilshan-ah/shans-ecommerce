@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
 use App\Models\Category;
+use App\Models\SubCategory;
 
 use File;
 
@@ -20,7 +23,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('backend/admin-add-category');     
+        $categories = Category::all();
+        return view('backend/admin-add-category',compact('categories'));     
     }
 
     /**
@@ -31,7 +35,7 @@ class CategoryController extends Controller
 
         $validator = Validator::make($request->all(), [
             'catname' => 'required|unique:categories,name',
-            'catimg' => 'required|image',
+            'catimg' => 'image',
             'status' => 'required',
         ], [
             'catname.required' => 'The category name is required.',
@@ -48,31 +52,53 @@ class CategoryController extends Controller
 
 
         $category = new Category();
+        $subcategory = new SubCategory();
 
-        $imageName = "";
+        if($request->pcat == 0){
+            $imageName = "";
 
-        if($image = $request->file('catimg')){
-            $imageName = time().uniqid().'.'.$image->getClientOriginalExtension();
-            $image->move('frontend/imgs/categories',$imageName);
+            if($image = $request->file('catimg')){
+                $imageName = time().uniqid().'.'.$image->getClientOriginalExtension();
+                $image->move('frontend/imgs/categories',$imageName);
+            }
+
+            $slug = Str::slug($request->catname);
+
+            $category->name = $request->catname;
+            $category->slug = $slug;
+            $category->image = $imageName;
+            $category->isactive = boolval($request->status);
+
+
+            if ($category->save()) {
+                // Category created successfully
+                $message = 'Category created successfully.';
+                $type = 'success';
+            } else {
+                // Failed to create category
+                $message = 'Failed to create category.';
+                $type = 'error';
+            }
+        }else{
+            $slug = Str::slug($request->catname);
+
+            $subcategory->name = $request->catname;
+            $subcategory->slug = $slug;
+            $subcategory->parent_cat = $request->pcat;
+            $subcategory->isactive = boolval($request->status);
+
+
+            if ($subcategory->save()) {
+                // Category created successfully
+                $message = 'Sub Category created successfully.';
+                $type = 'success';
+            } else {
+                // Failed to create category
+                $message = 'Failed to create category.';
+                $type = 'error';
+            }
         }
 
-        $slug = Str::slug($request->catname);
-
-        $category->name = $request->catname;
-        $category->slug = $slug;
-        $category->image = $imageName;
-        $category->isactive = boolval($request->status);
-
-
-        if ($category->save()) {
-            // Category created successfully
-            $message = 'Category created successfully.';
-            $type = 'success';
-        } else {
-            // Failed to create category
-            $message = 'Failed to create category.';
-            $type = 'error';
-        }
     
         return redirect()->route('admin.add-cat')->with($type, $message);
     }
@@ -185,7 +211,8 @@ class CategoryController extends Controller
 
     public function analytics(string $slug){
         $category = Category::where('slug', $slug)->first();
+        $subcategories = SubCategory::all();
 
-        return view('backend/admin-category-analytics',compact('category'));
+        return view('backend/admin-category-analytics',compact('category','subcategories'));
     }
 }

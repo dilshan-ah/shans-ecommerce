@@ -122,7 +122,11 @@
                                 <a href="{{route('admin.cat-analytic',$category->slug)}}" class="text-dark">
                                     <div class="d-flex align-items-center">
                                         <div class="recent-product-img">
-                                            <img src="{{asset('frontend')}}/imgs/categories/{{$category->image}}" alt="{{$category->name}}">
+                                            @if($category->image)
+                                                <img src="{{asset('frontend')}}/imgs/categories/{{$category->image}}" alt="{{$category->name}}">
+                                            @else
+                                                <img id="image-preview" src="{{ asset('frontend/imgs/categories/default.jpg') }}" alt="Category Image Preview" class="px-3" style="width: 100px; height: auto;">
+                                            @endif
                                         </div>
                                         <div class="ms-2">
                                             <h6 class="mb-1 font-14">

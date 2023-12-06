@@ -3,8 +3,12 @@
 <div class="card radius-10">
     <div class="card-body">
         <div class="d-flex align-items-center position-relative">
-            <img src="{{asset('frontend')}}/imgs/categories/{{$category->image}}" class="" width="90" height="90" alt="...">
-            <div class="flex-grow-1 ms-3">
+            @if($category->image)
+                <img src="{{asset('frontend')}}/imgs/categories/{{$category->image}}" class="" width="90" height="90" alt="...">
+            @else
+                <img src="{{asset('frontend/imgs/categories/default.jpg')}}" class="" width="90" height="90" alt="...">    
+            @endif
+                <div class="flex-grow-1 ms-3">
                 <h5 class="mt-0">{{$category->name}}</h5>
                 <p class="mb-0">Created at: {{ $category->created_at->format('Y-m-d') }}</p>
                 <p class="mb-0">Last updated: {{ $category->updated_at->diffForHumans() }}</p>
@@ -40,26 +44,13 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0">Total Users</p>
-                        <h5 class="mb-0">85,028</h5>
+                        <p class="mb-0 text-secondary">Revenue</p>
+                        <h4 class="my-1">$4805</h4>
+                        <p class="mb-0 font-13 text-success"><i class="bx bxs-up-arrow align-middle"></i>$34 from last week</p>
                     </div>
-                    <div class="dropdown ms-auto">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">	<i class='bx bx-dots-horizontal-rounded font-22 text-dark'></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
+                    <div class="widgets-icons bg-light-success text-success ms-auto"><i class="bx bxs-wallet"></i>
                     </div>
                 </div>
-                <div class="" id="chart2"></div>
             </div>
         </div>
     </div>
@@ -68,26 +59,13 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0">Page Views</p>
-                        <h5 class="mb-0">42,892</h5>
+                        <p class="mb-0 text-secondary">Total Products</p>
+                        <h4 class="my-1">8.4K</h4>
+                        <p class="mb-0 font-13 text-success"><i class='bx bxs-up-arrow align-middle'></i>24 from last week</p>
                     </div>
-                    <div class="dropdown ms-auto">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">	<i class='bx bx-dots-horizontal-rounded font-22 text-dark'></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
+                    <div class="widgets-icons bg-light-info text-info ms-auto"><i class="lni lni-archive"></i>
                     </div>
                 </div>
-                <div class="" id="chart3"></div>
             </div>
         </div>
     </div>
@@ -96,26 +74,13 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0">Avg. Session Duration</p>
-                        <h5 class="mb-0">00:03:20</h5>
+                        <p class="mb-0 text-secondary">On stores</p>
+                        <h4 class="my-1">59K</h4>
+                        <p class="mb-0 font-13 text-danger"><i class='bx bxs-down-arrow align-middle'></i>3 from last week</p>
                     </div>
-                    <div class="dropdown ms-auto">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">	<i class='bx bx-dots-horizontal-rounded font-22 text-dark'></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
+                    <div class="widgets-icons bg-light-danger text-danger ms-auto"><i class="lni lni-restaurant"></i>
                     </div>
                 </div>
-                <div class="" id="chart4"></div>
             </div>
         </div>
     </div>
@@ -124,30 +89,100 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0">Bounce Rate</p>
-                        <h5 class="mb-0">51.46%</h5>
+                        <p class="mb-0 text-secondary">Products sold</p>
+                        <h4 class="my-1">34.46%</h4>
+                        <p class="mb-0 font-13 text-danger"><i class='bx bxs-down-arrow align-middle'></i>12.2% from last week</p>
                     </div>
-                    <div class="dropdown ms-auto">
-                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">	<i class='bx bx-dots-horizontal-rounded font-22 text-dark'></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                            </li>
-                        </ul>
+                    <div class="widgets-icons bg-light-warning text-warning ms-auto"><i class='bx bx-line-chart-down'></i>
                     </div>
                 </div>
-                <div class="" id="chart5"></div>
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="row row-cols-1 row-cols-xl-2">
+    <div class="col d-flex">
+        <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h5 class="mb-0">Top Sub Categories</h5>
+                    </div>
+                    <div class="font-22 ms-auto"><i class='bx bx-dots-horizontal-rounded'></i>
+                    </div>
+                </div>
+                <div class="mt-5" id="chart15"></div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Kids <span class="badge bg-success rounded-pill">25</span>
+                </li>
+                <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Women <span class="badge bg-danger rounded-pill">10</span>
+                </li>
+                <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Men <span class="badge bg-primary rounded-pill">65</span>
+                </li>
+                <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Furniture <span class="badge bg-warning text-dark rounded-pill">14</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col d-flex">
+        <div class="card radius-10 w-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <h5 class="mb-1">Sub Categories</h5>
+                        @foreach ($subcategories as $subcategory)
+                            @if ($subcategory->parent_cat == $category->id)
+                                <p class="mb-0 font-13 text-secondary">
+                                    {{ $subcategories->count() }} sub category under {{ $category->name }}
+                                </p>
+                                @break
+                            @else
+                                <p class="mb-0 font-13 text-secondary">
+                                    No sub category under {{ $category->name }}
+                                </p>
+                                @break    
+                            @endif
+                        @endforeach
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="product-list p-3 mb-3 ps ps--active-y">
+               
+
+                @foreach($subcategories as $subcategory)
+                @if($subcategory->parent_cat == $category->id)
+                    <div class="row border mx-0 mb-3 py-2 radius-10 cursor-pointer">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <div class="product-img">
+                                    <img src="{{asset('backend')}}/assets/images/icons/chair.png" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6 class="mb-1">{{$subcategory->name}}</h6>
+                                    <p class="mb-0">$240.00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="mb-1">$2140.00</h6>
+                            <p class="mb-0">345 Sales</p>
+                        </div>
+                    </div>
+                @endif
+                @endforeach
+                
+
+            <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 380px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 214px;"></div></div></div>
+
+        </div>
+    </div>
+</div>
+
+
 
 <style>
     #SvgjsSvg1158,#apexchartslry1p9si{

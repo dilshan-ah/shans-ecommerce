@@ -96,7 +96,7 @@
                                 <div class="mb-3">
                                     <label for="inputProductDescription" class="form-label">Category Image</label>
                                     <div class="d-flex align-items-center">
-                                        <img id="image-preview" class="px-3" src="{{ asset('frontend/imgs/categories/' . $category->image) }}" alt="Category Image" style="max-width: 100%; height: auto;">
+                                        <img id="image-preview" class="px-3" src="{{ asset('frontend/imgs/categories/' . $category->image) }}" alt="Category Image" style="width: 100px; height: auto;">
                                         <input id="image-uploadify" type="file" name="catimg" accept="image/jpeg, image/png, image/gif, image/svg+xml" onchange="previewImage(event)">
                                     </div>                                    
                                     @error('catimg')

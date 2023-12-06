@@ -28,6 +28,17 @@
 	<!-- jQuery CSS -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+	<!-- select menu -->
+
+	<link href="{{asset('backend')}}/assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
+	<link href="{{asset('backend')}}/assets/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
+
+	<!-- input tags -->
+	
+	<link href="{{asset('backend')}}/assets/plugins/input-tags/css/tagsinput.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" id="mce-u0" referrerpolicy="origin" href="https://cdn.tiny.cloud/1/no-origin/tinymce/5.10.7-133/skins/ui/oxide/skin.min.css">
+
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="{{asset('backend')}}/assets/css/dark-theme.css" />
 	<link rel="stylesheet" href="{{asset('backend')}}/assets/css/semi-dark.css" />
